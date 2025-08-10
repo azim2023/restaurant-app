@@ -1,0 +1,9 @@
+{
+    "home": {
+        "heroTitle": "This is heroTitle",
+        "heroSubtitle": "This is heroSubtitle",
+        "bookNow": "Book a table",
+        "menuPreviewTitle": "This is menuPreviewtitle",
+        "menuPreviewSubtitle": "This is menuPreviewSubtitle"
+    }
+}
