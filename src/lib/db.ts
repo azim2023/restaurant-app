@@ -3,6 +3,11 @@ import { Pool } from 'pg';
 declare global {
     var db: Pool | undefined;
 }
+
+if (!process.env.DATABASE_URL) {
+  throw new Error("DATABASE_URL is not set in environment variables");
+}
+
 export const db = 
     global.db ||
     new Pool({

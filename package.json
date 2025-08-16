@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:seed": "node --env-file=.env.local --import=tsx src/scripts/seedData.ts"
   },
   "dependencies": {
     "dotenv": "^17.2.1",
@@ -28,6 +29,8 @@
     "eslint": "^9",
     "eslint-config-next": "15.4.5",
     "tailwindcss": "^4",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.20.4",
     "typescript": "^5"
   }
 }
