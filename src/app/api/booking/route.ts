@@ -62,6 +62,7 @@ export async function GET(req: Request) {
         const from = searchParams.get("from");
         const to = searchParams.get("to");
         const locale = searchParams.get("locale") || "sv";
+        const bookingId = searchParams.get("bookingId");
 
         let query =
             `SELECT 
@@ -89,6 +90,11 @@ export async function GET(req: Request) {
         ;
         const params: any[] = [locale];
         let condition: string[] = [];
+
+        if(bookingId) {
+            condition.push(`b.id = $${params.length + 1}`);
+            params.push(bookingId);
+        }
         if(date) {
             if (isNaN(Date.parse(date))){
             return NextResponse.json({error: "Invalid date format"}, {status: 400});
@@ -108,6 +114,10 @@ export async function GET(req: Request) {
         }
         query += ` ORDER BY b.booking_time ASC`;
         const result = await db.query(query, params);
+
+        if (!bookingId && result.rows.length === 0) {
+            return NextResponse.json({error: "Booking not found"}, {status: 404});
+        }
 
         const bookings = result.rows.map(row =>({
             id: row.booking_id,
@@ -130,9 +140,11 @@ export async function GET(req: Request) {
             }
         }));
 
-        return NextResponse.json(bookings);
+        return NextResponse.json({bookings}, {status: 200});
     } catch (error) {
         console.error("Error fetching booking: ", error);
         return NextResponse.json({error: "Server error"}, {status: 500});
     }
 }
+
+

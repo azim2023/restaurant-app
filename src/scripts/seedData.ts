@@ -17,10 +17,12 @@ const tablesData = [
 
 const categoriesData = [
   { translations: { sv: { name: "Förrätter", description: "Smårätter" }, en: { name: "Starters", description: "Small dishes" } } },
+  { translations: { sv: { name: "Rätter", description: "Rätter" }, en: { name: "Meals", description: "Meals" } } },
 ];
 
 const menuItemsData = [
   { category_index: 0, price: 79.0, translations: { sv: { name: "Bruschetta", description: "Rostat bröd" }, en: { name: "Bruschetta", description: "Toasted bread" } } },
+  { category_index: 1, price: 20.0, translations: { sv: { name: "Bruschetta", description: "Rostat bröd" }, en: { name: "Bruschetta", description: "Toasted bread" } } },
 ];
 
 const bookingsData = [
